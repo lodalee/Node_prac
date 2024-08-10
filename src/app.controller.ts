@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import { Request } from 'express';
 import { CatsService } from './cats/cats.service';
 
-@Controller('cats')
+@Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -12,6 +12,6 @@ export class AppController {
 
   @Get()
   getHello() {
-    return 'hello world';
+    return this.catsService.hiCatServiceProduct();
   }
 }
