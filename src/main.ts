@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-async function bootstrap() { /* 비동기 작업 */
+async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(8000);
 }
