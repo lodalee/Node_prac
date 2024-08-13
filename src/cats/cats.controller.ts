@@ -1,19 +1,14 @@
 import { HttpExceptionFilter } from 'src/common/exceptions/http-exception.filter';
 import { CatsService } from './cats.service';
 import {
+  Body,
   Controller,
-  Delete,
   Get,
-  HttpException,
-  Param,
-  ParseIntPipe,
-  Patch,
   Post,
-  Put,
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
-import { PositiveIntPipe } from 'src/common/pipes/positiveIntPipe';
+// import { PositiveIntPipe } from 'src/common/pipes/positiveIntPipe';
 import { SuccessInterceptor } from 'src/common/interceptors/success.Interceptor';
 
 @Controller('cats')
@@ -23,35 +18,28 @@ export class CatsController {
   constructor(private readonly CatsService: CatsService) {}
 
   @Get()
-  getAllCat() {
-    console.log('hello controller');
-    return { cats: 'get all cat api' };
-  }
-
-  @Get(':id')
-  getOneCat(@Param('id', ParseIntPipe, PositiveIntPipe) param: number) {
-    // console.log(param);
-    // console.log(typeof param);
-    return 'one cat';
+  getCurrentCat() {
+    return 'current cat';
   }
 
   @Post()
-  createCat() {
-    return 'create cat';
+  async signUp(@Body() body) {
+    console.log(body);
+    return 'signup';
   }
 
-  @Put(':id')
-  updateCat() {
-    return 'update cat';
+  @Post()
+  logIn() {
+    return 'login';
   }
 
-  @Patch(':id')
-  updatePartialCat() {
-    return 'update';
+  @Post()
+  logOut() {
+    return 'logout';
   }
 
-  @Delete(':id')
-  deleteCat() {
-    return 'delete cat';
+  @Post()
+  uploadCatImg() {
+    return 'uploadImg';
   }
 }
